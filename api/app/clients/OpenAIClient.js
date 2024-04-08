@@ -1089,6 +1089,9 @@ ${convo}
         });
       }
 
+      modelOptions.messages = modelOptions.messages.slice(-4);
+      logger.debug('[OpenAIClient] Sliced messages:', modelOptions.messages);
+
       let UnexpectedRoleError = false;
       if (modelOptions.stream) {
         const stream = await openai.beta.chat.completions
