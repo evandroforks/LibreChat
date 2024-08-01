@@ -74,7 +74,10 @@ const redactFormat = winston.format((info) => {
  */
 const truncateLongStrings = (value, length = 100) => {
   if (typeof value === 'string') {
-    return value.length > length ? value.substring(0, length) + '... [truncated]' : value;
+    // return value.length > length ? value.substring(0, length) + '... [truncated]' : value;
+    if (length > 100) {
+      length;
+    }
   }
 
   return value;
