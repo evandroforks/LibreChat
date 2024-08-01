@@ -25,7 +25,7 @@ const Nav = ({ navVisible, setNavVisible }) => {
   const { conversationId } = useParams();
   const { isAuthenticated } = useAuthContext();
 
-  const [navWidth, setNavWidth] = useState('260px');
+  const [navWidth, setNavWidth] = useState('360px');
   const [isHovering, setIsHovering] = useState(false);
   const isSmallScreen = useMediaQuery('(max-width: 768px)');
   const [newUser, setNewUser] = useLocalStorage('newUser', true);
@@ -43,7 +43,7 @@ const Nav = ({ navVisible, setNavVisible }) => {
     if (isSmallScreen) {
       setNavWidth('320px');
     } else {
-      setNavWidth('260px');
+      setNavWidth('360px');
     }
   }, [isSmallScreen]);
 
@@ -125,7 +125,7 @@ const Nav = ({ navVisible, setNavVisible }) => {
       <Tooltip>
         <div
           className={
-            'nav active max-w-[320px] flex-shrink-0 overflow-x-hidden bg-gray-50 dark:bg-gray-750 md:max-w-[260px]'
+            'nav active max-w-[360px] flex-shrink-0 overflow-x-hidden bg-gray-50 dark:bg-gray-750 md:max-w-[360px]'
           }
           style={{
             width: navVisible ? navWidth : '0px',
@@ -133,7 +133,7 @@ const Nav = ({ navVisible, setNavVisible }) => {
             transition: 'width 0.2s, visibility 0.2s',
           }}
         >
-          <div className="h-full w-[320px] md:w-[260px]">
+          <div className="h-full w-[360px] md:w-[360px]">
             <div className="flex h-full min-h-0 flex-col">
               <div
                 className={cn(
