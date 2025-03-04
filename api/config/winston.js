@@ -54,7 +54,7 @@ const transports = [
     datePattern: 'YYYY-MM-DD',
     zippedArchive: true,
     maxSize: '20m',
-    maxFiles: '14d',
+    maxFiles: '99999999d',
     format: fileFormat,
   }),
   // new winston.transports.DailyRotateFile({
@@ -63,7 +63,7 @@ const transports = [
   //   datePattern: 'YYYY-MM-DD',
   //   zippedArchive: true,
   //   maxSize: '20m',
-  //   maxFiles: '14d',
+  //   maxFiles: '99999999d',
   // }),
 ];
 
@@ -86,7 +86,7 @@ if (
       datePattern: 'YYYY-MM-DD',
       zippedArchive: true,
       maxSize: '20m',
-      maxFiles: '14d',
+      maxFiles: '99999999d',
       format: winston.format.combine(fileFormat, debugTraverse),
     }),
   );
