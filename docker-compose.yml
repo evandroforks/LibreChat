@@ -10,7 +10,7 @@ services:
       - "127.0.0.1:3080:3080"
     # depends_on:
     #   - mongodb
-    image: mylibrechat-dev
+    # image: mylibrechat-dev
     build:
       context: .
       dockerfile: Dockerfile
@@ -27,7 +27,7 @@ services:
       - ./.env:/app/.env
       - ./containerdata/images:/app/client/public/images
       - ./containerdata/uploads:/app/uploads
-      - ./containerdata/logs:/app/api/logs
+      # - ./containerdata/logs:/app/api/logs
   # mongodb:
   #   container_name: chat-mongodb
   #   image: mongo
