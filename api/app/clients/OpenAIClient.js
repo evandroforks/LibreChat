@@ -1350,6 +1350,9 @@ ${convo}
         });
       }
 
+      modelOptions.messages = modelOptions.messages.slice(-4);
+      logger.debug('[OpenAIClient] Sliced messages:', modelOptions.messages);
+
       let UnexpectedRoleError = false;
       /** @type {Promise<void>} */
       let streamPromise;
