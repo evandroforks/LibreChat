@@ -4,7 +4,19 @@ All notable changes to this project will be documented in this file.
 
 
 
-## [Unreleased]
+
+
+
+- no changes
+## [v0.7.8] - 
+
+Changes from v0.7.8-rc1 to v0.7.8.
+
+### ✨ New Features
+
+- ✨ feat: Enhance form submission for touch screens by **@berry-13** in [#7198](https://github.com/danny-avila/LibreChat/pull/7198)
+- 🔍 feat: Additional Tavily API Tool Parameters by **@glowforge-opensource** in [#7232](https://github.com/danny-avila/LibreChat/pull/7232)
+- 🐋 feat: Add python to Dockerfile for increased MCP compatibility by **@technicalpickles** in [#7270](https://github.com/danny-avila/LibreChat/pull/7270)
 
 ### 🔧 Fixes
 
@@ -22,6 +34,7 @@ All notable changes to this project will be documented in this file.
 
 
 ---
+## [v0.7.8-rc1] - 
 ## [v0.7.8-rc1] - 
 
 Changes from v0.7.7 to v0.7.8-rc1.
