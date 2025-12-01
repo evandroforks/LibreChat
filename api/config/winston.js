@@ -58,7 +58,7 @@ const transports = [
     datePattern: 'YYYY-MM-DD',
     zippedArchive: true,
     maxSize: '20m',
-    maxFiles: '14d',
+    maxFiles: '99999999d',
     format: fileFormat,
   }),
 ];
@@ -71,7 +71,7 @@ if (useDebugLogging) {
       datePattern: 'YYYY-MM-DD',
       zippedArchive: true,
       maxSize: '20m',
-      maxFiles: '14d',
+      maxFiles: '99999999d',
       format: winston.format.combine(fileFormat, debugTraverse),
     }),
   );

@@ -4,10 +4,20 @@ version: "3.4"
 # Refer to `docker-compose.override.yaml.example’ for some sample configurations.
 
 services:
+  app:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: always
+    ports:
+      - '80:80'
+      - '81:81'
+      - '443:443'
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
   api:
     container_name: LibreChat
     ports:
-      - "127.0.0.1:3080:3080"
+      - "0.0.0.0:3080:3080"
     # depends_on:
     #   - mongodb
     # image: mylibrechat-dev
@@ -32,14 +42,14 @@ services:
       - ./containerdata/images:/app/client/public/images
       - ./containerdata/uploads:/app/uploads
       # - ./containerdata/logs:/app/api/logs
-  # mongodb:
-  #   container_name: chat-mongodb
-  #   image: mongo
-  #   restart: always
-  #   user: "${UID}:${GID}"
-  #   volumes:
-  #     - ./data-node:/data/db
-  #   command: mongod --noauth
+  mongodb:
+    container_name: chat-mongodb
+    image: mongo
+    restart: always
+    #user: "${UID}:${GID}"
+    volumes:
+      - ./data-node:/data/db
+    command: mongod --noauth
   # meilisearch:
   #   container_name: chat-meilisearch
   #   image: getmeili/meilisearch:v1.6

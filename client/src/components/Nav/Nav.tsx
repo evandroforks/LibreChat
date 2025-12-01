@@ -23,8 +23,8 @@ const BookmarkNav = lazy(() => import('./Bookmarks/BookmarkNav'));
 const AccountSettings = lazy(() => import('./AccountSettings'));
 const AgentMarketplaceButton = lazy(() => import('./AgentMarketplaceButton'));
 
-const NAV_WIDTH_DESKTOP = '260px';
-const NAV_WIDTH_MOBILE = '320px';
+const NAV_WIDTH_DESKTOP = '360px';
+const NAV_WIDTH_MOBILE = '360px';
 
 const NavMask = memo(
   ({ navVisible, toggleNavVisible }: { navVisible: boolean; toggleNavVisible: () => void }) => (
@@ -196,8 +196,8 @@ const Nav = memo(
             <motion.div
               data-testid="nav"
               className={cn(
-                'nav active max-w-[320px] flex-shrink-0 overflow-x-hidden bg-surface-primary-alt',
-                'md:max-w-[260px]',
+                'nav active max-w-[360px] flex-shrink-0 overflow-x-hidden bg-surface-primary-alt',
+                'md:max-w-[360px]',
               )}
               initial={{ width: 0 }}
               animate={{ width: navWidth }}
@@ -205,7 +205,7 @@ const Nav = memo(
               transition={{ duration: 0.2 }}
               key="nav"
             >
-              <div className="h-full w-[320px] md:w-[260px]">
+              <div className="h-full w-[360px] md:w-[360px]">
                 <div className="flex h-full flex-col">
                   <nav
                     id="chat-history-nav"
