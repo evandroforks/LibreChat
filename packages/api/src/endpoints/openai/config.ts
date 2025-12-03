@@ -1,4 +1,4 @@
-import { ProxyAgent } from 'undici';
+import { ProxyAgent, Agent } from 'undici';
 import { Providers } from '@librechat/agents';
 import { KnownEndpoints, EModelEndpoint } from 'librechat-data-provider';
 import type * as t from '~/types';
@@ -137,6 +137,30 @@ export function getOpenAIConfig(
     configOptions.fetchOptions = {
       dispatcher: proxyAgent,
     };
+  }
+
+  // Set longer timeout for reasoning models (o1/o3/gpt-5)
+  const REASONING_MODEL_TIMEOUT = 1800000; // 30 minutes
+  const isReasoningModel =
+    modelOptions.model && /\b(o[13]|gpt-5)(?:-|$)/.test(modelOptions.model as string);
+  if (isReasoningModel && !configOptions.fetchOptions) {
+    const reasoningAgent = new Agent({
+      bodyTimeout: REASONING_MODEL_TIMEOUT,
+      headersTimeout: REASONING_MODEL_TIMEOUT,
+    });
+    configOptions.fetchOptions = {
+      dispatcher: reasoningAgent,
+    } as RequestInit;
+  } else if (isReasoningModel && configOptions.fetchOptions) {
+    // If there's already fetchOptions, replace with reasoning agent
+    const reasoningAgent = new Agent({
+      bodyTimeout: REASONING_MODEL_TIMEOUT,
+      headersTimeout: REASONING_MODEL_TIMEOUT,
+    });
+    configOptions.fetchOptions = {
+      ...configOptions.fetchOptions,
+      dispatcher: reasoningAgent,
+    } as RequestInit;
   }
 
   if (azure && !isAnthropic) {

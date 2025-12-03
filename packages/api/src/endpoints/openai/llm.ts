@@ -260,6 +260,7 @@ export function getOpenAILLMConfig({
 
   /**
    * Note: OpenAI reasoning models (o1/o3/gpt-5) do not support temperature and other sampling parameters
+   * These models also need longer timeouts as they take more time to reason
    */
   if (modelOptions.model && /\b(o[13]|gpt-5)(?:-|$)/.test(modelOptions.model as string)) {
     const reasoningExcludeParams = [
@@ -280,6 +281,11 @@ export function getOpenAILLMConfig({
         delete llmConfig[param as keyof t.OAIClientOptions];
       }
     });
+
+    // Set longer timeout for reasoning models (10 minutes)
+    if (!llmConfig.timeout) {
+      llmConfig.timeout = 1800000;
+    }
   }
   /**
    * Note: OpenAI Web Search models do not support any known parameters besides `max_tokens`
