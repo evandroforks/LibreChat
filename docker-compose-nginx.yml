@@ -15,7 +15,6 @@ services:
       - ./data:/data
       - ./letsencrypt:/etc/letsencrypt
   api:
-    container_name: LibreChat
     ports:
       - "0.0.0.0:3080:3080"
     # depends_on:
@@ -43,7 +42,6 @@ services:
       - ./containerdata/uploads:/app/uploads
       # - ./containerdata/logs:/app/api/logs
   mongodb:
-    container_name: chat-mongodb
     image: mongo
     restart: always
     #user: "${UID}:${GID}"
