@@ -3,9 +3,17 @@
 # Logs
 data-node
 meili_data*
-data/
+data/logs/
+data/custom_ssl/
+data/letsencrypt-acme-challenge/
 logs
 *.log
+
+containerdata/
+data/database.sqlite
+data/keys.json
+data/violations.json
+letsencrypt/
 
 # Runtime data
 pids

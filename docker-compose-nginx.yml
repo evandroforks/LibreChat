@@ -44,6 +44,15 @@ services:
       - ./containerdata/images:/app/client/public/images
       - ./containerdata/uploads:/app/uploads
       - ./containerdata/logs:/app/logs
+  filebrowser:
+    image: filebrowser/filebrowser:latest
+    restart: always
+    user: "${UID}:${GID}"
+    volumes:
+      - ./containerdata/filebrowser/data:/srv
+      - ./containerdata/filebrowser/filebrowser.db:/database/filebrowser.db
+      - ./containerdata/filebrowser/settings.json:/config/settings.json
+    command: --baseURL /myfiles
   mongodb:
     image: mongo
     restart: always
