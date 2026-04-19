@@ -4,13 +4,14 @@ version: "3.4"
 # Refer to `docker-compose.override.yaml.example’ for some sample configurations.
 
 services:
-  app:
+  nginx:
     image: 'jc21/nginx-proxy-manager:latest'
     restart: always
     ports:
       - '82:80'
       - '81:81'
       - '443:443'
+      - '5174:5174'
     volumes:
       - ./data:/data
       - ./letsencrypt:/etc/letsencrypt
